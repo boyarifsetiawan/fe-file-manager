@@ -3,7 +3,7 @@ import { api } from "../axios.js";
 import {  addToFavoriteUrl, fileSharedByMeUrl, fileSharedWithMeUrl, fileShareUrl, fileTrashUrl } from "../Helper/routes-api.js";
 import { showSuccessNotification } from "../event-bus.js";
 
-const baseURL = "/api"
+// const baseURL = "/api"
 export const useFilesStore = defineStore("files", {
 	state: () => ({
 		files: [],
@@ -20,7 +20,7 @@ export const useFilesStore = defineStore("files", {
 		async fetchFolder(folderPath = "", search ="") {
 			const url = folderPath ? `/my-files/${folderPath}` : `/my-files`;
 			try {
-				const res = await api.get(baseURL + url, {
+				const res = await api.get(url, {
 					params:{
 						search: search
 					}
