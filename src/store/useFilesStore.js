@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { api } from "../axios.js";
+import axios from "axios";
 import {  addToFavoriteUrl, fileSharedByMeUrl, fileSharedWithMeUrl, fileShareUrl, fileTrashUrl } from "../Helper/routes-api.js";
 import { showSuccessNotification } from "../event-bus.js";
+import { useAuthStore } from "./useAuthStore.js";
 
-// const baseURL = "/api"
+const baseURL = "http://202.10.37.4:8080/api"
 export const useFilesStore = defineStore("files", {
 	state: () => ({
 		files: [],
@@ -18,9 +20,12 @@ export const useFilesStore = defineStore("files", {
 
 	actions: {
 		async fetchFolder(folderPath = "", search ="") {
-			const url = folderPath ? `/api/my-files/${folderPath}` : `/api/my-files`;
+			const url = folderPath ? `/my-files/${folderPath}` : `/my-files`;
 			try {
-				const res = await api.get(url, {
+				const res = await axios.get(baseURL+url, {
+					headers: {
+						Authorization: `Bearer ${useAuthStore().token}`
+					},
 					params:{
 						search: search
 					}

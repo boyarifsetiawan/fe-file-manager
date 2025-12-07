@@ -129,7 +129,7 @@
 			return;
 		}
 
-		httpGet(allFiles.value.next).then((res) => {
+		fileStore.fetchFileTrash(allFiles.value.next).then((res) => {
 			var data = ref(res.files.data)
 			allFiles.value.data = [...allFiles.value.data, ...data.value];
 			allFiles.value.next = res.files.links.next;
