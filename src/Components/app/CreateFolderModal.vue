@@ -71,7 +71,7 @@ import { emitter, ON_FOLDER_CREATED } from "../../event-bus";
 		form.parent_id = fileStore?.folder?.id;
 		console.log(fileStore.folder.id);
 		try {
-			const res = await axios.post('http://202.10.37.4:8080/api/folder-create', form, {
+			const res = await axios.post('/api/folder-create', form, {
 				headers: {
 					Accept: 'application/json',
 					'Content-Type': 'application/json',

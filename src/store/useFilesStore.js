@@ -3,7 +3,7 @@ import { api } from "../axios.js";
 import {  addToFavoriteUrl, fileSharedByMeUrl, fileSharedWithMeUrl, fileShareUrl, fileTrashUrl } from "../Helper/routes-api.js";
 import { showSuccessNotification } from "../event-bus.js";
 
-const baseURL = "http://202.10.37.4:8080/api"
+const baseURL = "/api"
 export const useFilesStore = defineStore("files", {
 	state: () => ({
 		files: [],
