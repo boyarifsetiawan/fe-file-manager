@@ -18,7 +18,7 @@ export const useFilesStore = defineStore("files", {
 
 	actions: {
 		async fetchFolder(folderPath = "", search ="") {
-			const url = folderPath ? `/my-files/${folderPath}` : `/my-files`;
+			const url = folderPath ? `/api/my-files/${folderPath}` : `/api/my-files`;
 			try {
 				const res = await api.get(url, {
 					params:{
